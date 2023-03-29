@@ -1,0 +1,55 @@
+
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
+import { ComponentProps } from "react";
+import { PropsWithChildren } from "react";
+
+// import { Card } from "flowbite-react";
+
+interface CardProps extends PropsWithChildren<ComponentProps<'div'>> {
+  href: string,
+  imgSrc?: string,
+  imgWidth?: number,
+  imgHeight?: number,
+  imgAlt?: string
+}
+
+const Card: React.FC<CardProps> = ({
+  children,
+  href,
+  imgSrc,
+  imgWidth,
+  imgHeight,
+  imgAlt,
+  ...props
+}: CardProps) => {
+
+  return (
+    <Link 
+     href={href} className={cn('flex rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 flex-col', props.className)}>
+      {
+        imgSrc && imgAlt && <div className="md:max-w-sm max-w-full">
+          <Image
+          className="object-cover h-[20vh] object-center-right-notion"
+          alt={imgAlt}
+          src={imgSrc}
+          height={imgHeight}
+          width={imgWidth}
+        ></Image>
+        </div>
+      }
+      <div className="flex h-full flex-col justify-center gap-4 p-6">
+        {children}
+      </div>
+    </Link>
+  );
+};
+Card.defaultProps = {
+  imgWidth: 500,
+  imgHeight: 300
+}
+export default Card;
+
+
+export { Card }
