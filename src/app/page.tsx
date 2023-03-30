@@ -1,6 +1,8 @@
 import Cards from "@/components/Cards"
 import { getPages } from "@/lib/notion/getPages"
 
+export const revalidate = 10;
+
 async function getData() {
   const data = await getPages();
   return data!;
