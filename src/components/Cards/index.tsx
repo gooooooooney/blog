@@ -2,6 +2,7 @@
 import { PageObjectResponse, QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
 import { Card } from "../ui/Card";
 import { NotionQueryRichTextRes, NotionQueryTitleRes } from "@/types/notion-api";
+import { PAGE_TYPES } from "@/constants/pageTypes";
 
 
 interface CardsProps {
@@ -22,9 +23,9 @@ const Cards: React.FC<CardsProps> = ({ results }) => {
               <Card
                 className="basis-[30%] md:mr-[calc(10%/3)] mb-8 md:mb-[calc(10%/3)] md:[&:nth-child(3n)]:mr-0 md:w-52"
                 key={page.id}
-                href="/"
+                href={`/blog/${page.id}`}
                 imgAlt="post alt"
-                imgSrc={page.cover?.type === 'external' ? page.cover.external.url : ''}
+                imgSrc={page.cover?.type === PAGE_TYPES.EXTERNAL ? page.cover.external.url : ''}
               >
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-ellipsis overflow-hidden whitespace-nowrap">
                   {(page.properties.Name as NotionQueryTitleRes).title[0].plain_text}

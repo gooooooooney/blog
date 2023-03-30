@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.icon{
+  user-select: none;
+    transition: background 20ms ease-in 0s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 78px;
+    width: 78px;
+    border-radius: 0.25em;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    margin-left: 3px;
+    margin-bottom: 0px;
+    margin-top: -42px;
+    pointer-events: auto;
+}
