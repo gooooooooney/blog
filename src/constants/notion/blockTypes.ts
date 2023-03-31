@@ -30,4 +30,6 @@ export const enum BLOCK_TYPES {
   TOGGLE = "toggle",
   UNSUPPORTED = "unsupported",
   VIDEO = "video",
+  CODE = "code",
+
 }

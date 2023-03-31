@@ -6,10 +6,12 @@ specifiers:
   '@notionhq/client': ^2.2.3
   '@tailwindcss/typography': ^0.5.9
   '@types/node': 18.15.10
+  '@types/prismjs': ^1.26.0
   '@types/react': 18.0.29
   '@types/react-dom': 18.0.11
   autoprefixer: ^10.4.14
   await-to-js: ^3.0.0
+  clipboard-copy: ^4.0.1
   clsx: ^1.2.1
   commitizen: ^4.3.0
   cz-customizable: ^7.0.0
@@ -23,6 +25,7 @@ specifiers:
   next: 13.2.4
   next-themes: ^0.2.1
   postcss: ^8.4.21
+  prismjs: ^1.29.0
   react: 18.2.0
   react-dom: 18.2.0
   react-hot-toast: ^2.4.0
@@ -38,6 +41,7 @@ dependencies:
   '@types/react': 18.0.29
   '@types/react-dom': 18.0.11
   await-to-js: 3.0.0
+  clipboard-copy: 4.0.1
   clsx: 1.2.1
   eslint: 8.36.0
   eslint-config-next: 13.2.4_j4766f7ecgqbon3u7zlxn5zszu
@@ -46,6 +50,7 @@ dependencies:
   lucide-react: 0.128.0_react@18.2.0
   next: 13.2.4_biqbaboplfbrettd7655fr4n2y
   next-themes: 0.2.1_ld2jel3hspngo3u5lti2kgl2sq
+  prismjs: 1.29.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-hot-toast: 2.4.0_owo25xnefcwdq3zjgtohz6dbju
@@ -57,6 +62,7 @@ devDependencies:
   '@commitlint/cli': 17.5.0
   '@commitlint/config-conventional': 17.4.4
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.7
+  '@types/prismjs': 1.26.0
   autoprefixer: 10.4.14_postcss@8.4.21
   commitizen: 4.3.0
   cz-customizable: 7.0.0
@@ -605,6 +611,10 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
 
+  /@types/prismjs/1.26.0:
+    resolution: {integrity: sha512-ZTaqn/qSqUuAq1YwvOFQfVW1AR/oQJlLSZVustdjwI+GZ8kr0MSHBj0tsXPW1EqHubx50gtBEjbPGsdZwQwCjQ==}
+    dev: true
+
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: false
@@ -1082,6 +1092,10 @@ packages:
 
   /client-only/0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
+    dev: false
+
+  /clipboard-copy/4.0.1:
+    resolution: {integrity: sha512-wOlqdqziE/NNTUJsfSgXmBMIrYmfd5V0HCGsR8uAKHcg+h9NENWINcfRjtWGU77wDHC8B8ijV4hMTGYbrKovng==}
     dev: false
 
   /cliui/8.0.1:
@@ -3363,6 +3377,11 @@ packages:
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+    dev: false
+
+  /prismjs/1.29.0:
+    resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
+    engines: {node: '>=6'}
     dev: false
 
   /prop-types/15.8.1:

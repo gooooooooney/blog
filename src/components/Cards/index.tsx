@@ -2,7 +2,7 @@
 import { PageObjectResponse, QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
 import { Card } from "../ui/Card";
 import { NotionQueryRichTextRes, NotionQueryTitleRes } from "@/types/notion-api";
-import { PAGE_TYPES } from "@/constants/pageTypes";
+import { PAGE_TYPES } from "@/constants/notion/pageTypes";
 
 
 interface CardsProps {
@@ -23,7 +23,7 @@ const Cards: React.FC<CardsProps> = ({ results }) => {
               <Card
                 className="basis-[30%] md:mr-[calc(10%/3)] mb-8 md:mb-[calc(10%/3)] md:[&:nth-child(3n)]:mr-0 md:w-52"
                 key={page.id}
-                href={`/blog/${page.id}`}
+                href={`/post/${page.id}`}
                 imgAlt="post alt"
                 imgSrc={page.cover?.type === PAGE_TYPES.EXTERNAL ? page.cover.external.url : ''}
               >

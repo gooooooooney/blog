@@ -19,8 +19,8 @@ const Card: React.FC<CardProps> = ({
   children,
   href,
   imgSrc,
-  imgWidth,
-  imgHeight,
+  imgWidth = 400,
+  imgHeight = 50,
   imgAlt,
   ...props
 }: CardProps) => {
@@ -45,10 +45,6 @@ const Card: React.FC<CardProps> = ({
     </Link>
   );
 };
-Card.defaultProps = {
-  imgWidth: 500,
-  imgHeight: 300
-}
 export default Card;
 
 
