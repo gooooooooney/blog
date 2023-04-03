@@ -31,5 +31,14 @@ export const enum BLOCK_TYPES {
   UNSUPPORTED = "unsupported",
   VIDEO = "video",
   CODE = "code",
+}
 
+export const enum ICON_TYPE {
+  EMOJI = 'emoji',
+  FILE = 'file',
+  EXTERNAL ='external'
+}
+export const enum IMAGE_TYPE {
+  FILE = 'file',
+  EXTERNAL ='external'
 }

@@ -18,6 +18,12 @@ const nextConfig = {
         port: '',
         pathname: '/u/**',
       },
+      {
+        protocol: 'https',
+        hostname: 's3.us-west-2.amazonaws.com',
+        port: '',
+        pathname: '/secure.notion-static.com/**',
+      },
     ],
   },
   

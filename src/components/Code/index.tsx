@@ -1,6 +1,6 @@
 'use client'
 import copyToClipboard from 'clipboard-copy'
-import { highlightElement,highlightAll } from 'prismjs';
+import { highlightElement } from 'prismjs';
 import 'prismjs/components/prism-clike.min.js'
 import 'prismjs/components/prism-css-extras.min.js'
 import 'prismjs/components/prism-css.min.js'
@@ -13,8 +13,9 @@ import 'prismjs/components/prism-typescript.min.js'
 import 'prismjs/components/prism-markdown.min.js'
 import 'prismjs/components/prism-bash.min.js'
 import 'prismjs/components/prism-sql.min.js'
+import 'prismjs/components/prism-rust.min.js'
+import 'prismjs/components/prism-go.min.js'
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Icons } from '../Icons';
 import { cn } from '@/lib/utils';
 
 interface CodeProps extends React.PropsWithChildren {
@@ -31,7 +32,7 @@ const Code: React.FC<CodeProps> = ({ children, language = "javascript", caption,
   useEffect(() => {
     if (codeRef.current) {
       try {
-        highlightAll();
+        highlightElement(codeRef.current);
       } catch (err) {
         console.warn('prismjs highlight error', err)
       }
