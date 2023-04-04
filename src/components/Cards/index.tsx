@@ -14,14 +14,14 @@ const Cards: React.FC<CardsProps> = ({ results }) => {
 
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex items-center">
       <div className=" md:flex justify-start md:items-center md:flex-wrap">
         {
           (results as PageObjectResponse[]).map((page) => {
 
             return (
               <Card
-                className="basis-[30%] md:mr-[calc(10%/3)] mb-8 md:mb-[calc(10%/3)] md:[&:nth-child(3n)]:mr-0 md:w-52"
+                className="basis-[30%] md:mr-[calc(10%/3)] mb-8 md:mb-[calc(10%/3)] md:[&:nth-child(3n)]:mr-0 md:w-60"
                 key={page.id}
                 href={`/post/${page.id}`}
                 imgAlt="post alt"
