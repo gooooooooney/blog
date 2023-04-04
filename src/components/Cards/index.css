@@ -1,4 +1,3 @@
 .item:not(:nth-child(3n)){
 margin-right: calc(100% / 3 - 100% / 3 * 2)
 }
-.item:last

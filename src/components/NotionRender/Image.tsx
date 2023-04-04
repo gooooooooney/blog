@@ -16,7 +16,8 @@ const Image: React.FC<ImageProps> = ({ block }: ImageProps) => {
       <div className="flex justify-center items-center">
         <Zoom>
           <NextImage
-            width={400}
+          className="w-full"
+            width={800}
             height={400}
             src={image!}
             alt="image"

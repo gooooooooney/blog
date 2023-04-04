@@ -17,6 +17,8 @@ import 'prismjs/components/prism-rust.min.js'
 import 'prismjs/components/prism-go.min.js'
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { cn } from '@/lib/utils';
+import { Icons } from '../Icons';
+import { toast } from '../ui/Toast';
 
 interface CodeProps extends React.PropsWithChildren {
   language: string;
@@ -24,8 +26,6 @@ interface CodeProps extends React.PropsWithChildren {
 }
 
 const Code: React.FC<CodeProps> = ({ children, language = "javascript", caption, ...props }: CodeProps) => {
-  const [isCopied, setIsCopied] = useState(false)
-  const copyTimeout = useRef<number | null>()
   language = language.toLowerCase() 
 
   const codeRef = useRef(null)
@@ -41,33 +41,21 @@ const Code: React.FC<CodeProps> = ({ children, language = "javascript", caption,
 
   const onClickCopyToClipboard = useCallback(() => {
     copyToClipboard(children as unknown as string)
-    setIsCopied(true)
-
-    if (copyTimeout.current) {
-      clearTimeout(copyTimeout.current)
-      copyTimeout.current = null
-    }
-
-    copyTimeout.current = setTimeout(() => {
-      setIsCopied(false)
-    }, 1200) as unknown as number
-  }, [children, copyTimeout])
+    toast({
+      message: 'Copied to clipboard',
+    })
+  }, [children])
   return (
     <>
       <pre className={cn("dark:!bg-[#ffffff08] !bg-[#f7f6f3] w-full min-w-0 text-left rounded-sm", `language-${language}`)} >
-        {/* <div className='notion-code-copy'>
+        <div className='flex justify-between items-center'>
+          <p>{language}</p>
           <div className='notion-code-copy-button' onClick={onClickCopyToClipboard}>
             <Icons.Copy />
           </div>
+        </div>
 
-          {isCopied && (
-            <div className='notion-code-copy-tooltip'>
-              <div>{isCopied ? 'Copied' : 'Copy'}</div>
-            </div>
-          )}
-        </div> */}
-
-        <code className={`language-${language} p-8 pr-4 w-full block`} ref={codeRef}>
+        <code className={`language-${language === 'typescript' ? 'tsx' : language} p-8 pr-4 w-full block`} ref={codeRef}>
           {children}
         </code>
         {caption && (
