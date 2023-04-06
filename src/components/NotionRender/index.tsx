@@ -1,8 +1,5 @@
-import { BLOCK_TYPES, ICON_TYPE, IMAGE_TYPE } from "@/constants/notion/blockTypes";
-import { MENTION_TYPES, RICH_TEXT_TYPES } from "@/constants/notion/richTextTypes";
-import { cn } from "@/lib/utils";
-import { ParagraphBlockObjectResponse, RichTextItemResponse, MentionRichTextItemResponse, BlockObjectResponse, CodeBlockObjectResponse, BulletedListItemBlockObjectResponse, NumberedListItemBlockObjectResponse, QuoteBlockObjectResponse, CalloutBlockObjectResponse, ImageBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import Zoom from "../ui/Zoom";
+import { BLOCK_TYPES } from "@/constants/notion/blockTypes";
+import { BlockObjectResponse, CodeBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import Code from "../Code";
 import { Text } from "./Text";
 import BulletedListItem from "./BulletedListItem";
@@ -10,8 +7,10 @@ import NumberedListItem from "./NumberedListItem";
 import Quote from "./Quote";
 import Callout from "./Callout";
 import NotionImage from "./Image";
+import Toggle from "./Toggle";
+import { BlockObjectResponseWithChildren } from "@/types/notion-api";
 interface NotionRenderProps {
-  block: BlockObjectResponse
+  block: BlockObjectResponseWithChildren
 }
 
 const NotionRender: React.FC<NotionRenderProps> = ({ block }: NotionRenderProps) => {
@@ -41,7 +40,8 @@ const NotionRender: React.FC<NotionRenderProps> = ({ block }: NotionRenderProps)
       return <BulletedListItem block={block} />
     case BLOCK_TYPES.NUMBERED_LIST_ITEM:
       return <NumberedListItem block={block} />
-    // case BLOCK_TYPES.TOGGLE:
+    case BLOCK_TYPES.TOGGLE:
+      return <Toggle block={block} ></Toggle>
 
     case BLOCK_TYPES.QUOTE:
       return <Quote block={block} />

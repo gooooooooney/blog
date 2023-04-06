@@ -41,7 +41,10 @@ export default async function Page({ params }: { params: { id: string } }) {
         </div>
       </div>
       <div className="max-w-[90%] md:max-w-[60%] mx-auto text-lg pb-[30vh]">
-
+        {
+          // TODO properties
+          // pageInfo?.properties
+        }
 
         <div>
           {blocks?.map((block) => {

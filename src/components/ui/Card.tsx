@@ -5,8 +5,6 @@ import Link from "next/link";
 import { ComponentProps } from "react";
 import { PropsWithChildren } from "react";
 
-// import { Card } from "flowbite-react";
-
 interface CardProps extends PropsWithChildren<ComponentProps<'div'>> {
   href: string,
   imgSrc?: string,
@@ -26,8 +24,8 @@ const Card: React.FC<CardProps> = ({
 }: CardProps) => {
 
   return (
-    <Link 
-     href={href} className={cn('flex rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 flex-col', props.className)}>
+    <Link
+      href={href} className={cn('flex rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 flex-col', props.className)}>
       {
         imgSrc && imgAlt && <div className="md:max-w-sm max-w-full">
           <Image
@@ -39,7 +37,7 @@ const Card: React.FC<CardProps> = ({
         ></Image>
         </div>
       }
-      <div className="flex h-full flex-col justify-center gap-4 p-6">
+      <div className="flex flex-col gap-4 p-2 h-36">
         {children}
       </div>
     </Link>

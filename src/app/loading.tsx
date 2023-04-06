@@ -1,4 +1,4 @@
-import { Spinner } from "@/components/ui/Spinner";
+import { Spinner } from "@/components/ui/Flowbite";
 
 export default function Loading() {
   return <div className="h-screen flex justify-center items-center">

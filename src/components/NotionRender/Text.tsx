@@ -8,10 +8,15 @@ interface TextProps {
 
 const Text: React.FC<TextProps> = ({ block }: TextProps) => {
   switch (block.type) {
+    case BLOCK_TYPES.TOGGLE:
+      return  <RichText rich_text={block.toggle.rich_text} className="inline"></RichText>;
     case BLOCK_TYPES.PARAGRAPH:
-      const text = block.paragraph.rich_text
-      return <RichText rich_text={text}></RichText>;
+      return <RichText rich_text={block.paragraph.rich_text}></RichText>;
     case BLOCK_TYPES.HEADING_1:
+      // TODO Toggleable headings
+      // if ((block.heading_1 as any).is_toggleable) {
+
+      // }
       return <div className="mt-[2em]"><RichText className='text-[1.875em] font-bold' rich_text={block.heading_1.rich_text}></RichText></div>;
     case BLOCK_TYPES.HEADING_2:
       return <div className="mt-[1.4em]"><RichText className='text-[1.5em] font-bold' rich_text={block.heading_2.rich_text}></RichText></div>;
