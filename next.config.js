@@ -4,9 +4,9 @@ const nextConfig = {
     appDir: true,
     typedRoutes: true,
   },
-  output: 'export',
+  // output: 'export',
   images: {
-    unoptimized: true,
+    // unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
