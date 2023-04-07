@@ -6,18 +6,17 @@ import RichText from "../NotionRender/RichText";
 
 
 interface CardsProps {
-  results: QueryDatabaseResponse['results'];
+  results: PageObjectResponse[];
 }
 
 
 const Cards: React.FC<CardsProps> = ({ results }) => {
 
-
   return (
     <div className="flex items-center">
       <div className=" md:flex justify-start md:items-center md:flex-wrap">
         {
-          (results as PageObjectResponse[]).map((page) => {
+          (results).map((page) => {
 
             return (
               <Card

@@ -45,6 +45,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   return { 
     title: p?.properties.Name.type == PAGE_TYPES.TITLE ? p?.properties.Name.title[0].plain_text : 'notion with nextjs',
     keywords,
+    viewport: 'width=device-width, initial-scale=1.0, user-scalable=no,minimum-scale=1.0, maximum-scale=1.0',
     description,
    }
 }
@@ -62,7 +63,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     <div className="w-full">
       <div className="w-full md:w-[70%] md:mx-auto">
         <Image
-          className="w-full h-[30vh] object-cover opacity-100 block rounded-3xl"
+          className="w-full h-[30vh] object-cover opacity-100 block md:rounded-3xl"
           width={200}
           height={40}
           src={pageInfo?.cover?.type === PAGE_TYPES.EXTERNAL ? pageInfo.cover.external.url : ''}
@@ -73,11 +74,11 @@ export default async function Page({ params }: { params: { id: string } }) {
         <div className="">
           <div className="h-16 w-16 text-7xl max-w-full -mt-[2.2rem]">{pageInfo?.icon?.type === PAGE_TYPES.EMOJI && <span>{pageInfo.icon.emoji}</span>}</div>
           <div className="my-10">
-            <h1 className="text-5xl font-bold">{pageInfo?.properties.Name.type == PAGE_TYPES.TITLE ? pageInfo?.properties.Name.title[0].plain_text : ''}</h1>
+            <h1 className="text-[2em] leading-[1] font-bold">{pageInfo?.properties.Name.type == PAGE_TYPES.TITLE ? pageInfo?.properties.Name.title[0].plain_text : ''}</h1>
           </div>
         </div>
       </div>
-      <div className="max-w-[90%] md:max-w-[50%] mx-auto text-lg pb-[30vh]">
+      <div className="max-w-[90%] md:max-w-[50%] mx-auto pb-[5vh]">
         <div className="mb-3">
           {
             // TODO properties
@@ -99,8 +100,8 @@ export default async function Page({ params }: { params: { id: string } }) {
                 //   )
                 case PAGE_TYPES.CREATED_TIME:
                   return (
-                    <div key={key} className="flex my-1">
-                      <p className="text-xs font-bold mr-5">
+                    <div key={key} className="flex my-2 items-center">
+                      <p className="mr-5">
                         <Icons.CalendarDays />
                       </p>
                       <p>{dayjs(value.created_time).format(DayFormat.GENERAl_WITH_DAY_OF_WEEK)}</p>
@@ -123,8 +124,8 @@ export default async function Page({ params }: { params: { id: string } }) {
                 case PAGE_TYPES.MULTI_SELECT:
 
                   return (
-                    <div key={key} className="flex">
-                      <p className="text-xs font-bold mr-5">
+                    <div key={key} className="flex items-center">
+                      <p className="mr-5">
                         <Icons.Tags />
                       </p>
                       <p>{value.multi_select.map(v => {
