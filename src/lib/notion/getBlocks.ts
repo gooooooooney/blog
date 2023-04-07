@@ -1,7 +1,7 @@
 import { to } from "../utils";
 import {notion } from "./notion";
 import { errorHandler } from "./error";
-import { BlockObjectResponseWithChildren } from "@/types/notion-api";
+import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 
 
@@ -13,13 +13,5 @@ export async function getBlocks(block_id: string) {
     errorHandler(err)
     return
   }
-  let blocks = data.results as BlockObjectResponseWithChildren[]
-  // Recursively get children
-  for await (const block of blocks) {
-    if (block.has_children) {
-      const children = (await getBlocks(block.id))
-      block.children = children
-    }
-  }
-  return blocks
+  return data.results as BlockObjectResponse[]
 }

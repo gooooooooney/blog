@@ -8,9 +8,9 @@ import Quote from "./Quote";
 import Callout from "./Callout";
 import NotionImage from "./Image";
 import Toggle from "./Toggle";
-import { BlockObjectResponseWithChildren } from "@/types/notion-api";
+import Divider from "./Dividder";
 interface NotionRenderProps {
-  block: BlockObjectResponseWithChildren
+  block: BlockObjectResponse
 }
 
 const NotionRender: React.FC<NotionRenderProps> = ({ block }: NotionRenderProps) => {
@@ -23,13 +23,7 @@ const NotionRender: React.FC<NotionRenderProps> = ({ block }: NotionRenderProps)
       </Code>
     )
   }
-  const renderDivider = () => {
-    return (
-      <div className="w-full my-1">
-        <div className="border-b-[1px] visible border-solid border-gray-300 dark:border-gray-600"></div>
-      </div>
-    );
-  }
+
   switch (block.type) {
     case BLOCK_TYPES.PARAGRAPH:
     case BLOCK_TYPES.HEADING_1:
@@ -41,6 +35,7 @@ const NotionRender: React.FC<NotionRenderProps> = ({ block }: NotionRenderProps)
     case BLOCK_TYPES.NUMBERED_LIST_ITEM:
       return <NumberedListItem block={block} />
     case BLOCK_TYPES.TOGGLE:
+      {/* @ts-expect-error Async Server Component */}
       return <Toggle block={block} ></Toggle>
 
     case BLOCK_TYPES.QUOTE:
@@ -52,7 +47,7 @@ const NotionRender: React.FC<NotionRenderProps> = ({ block }: NotionRenderProps)
     // case BLOCK_TYPES.EQUATION:
 
     case BLOCK_TYPES.DIVIDER:
-      return renderDivider();
+      return <Divider />;
 
     // case BLOCK_TYPES.COLUMN_LIST:
 
