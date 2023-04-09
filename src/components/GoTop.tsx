@@ -5,7 +5,6 @@ import { Icons } from "./Icons";
 const GoTop: React.FC = () => {
   const scrollToTop = () => {
     const c = document.documentElement.scrollTop || document.body.scrollTop
-    console.log(c)
     if (c > 0) {
       window.requestAnimationFrame(scrollToTop)
       window.scrollTo(0, c - c / 8)
