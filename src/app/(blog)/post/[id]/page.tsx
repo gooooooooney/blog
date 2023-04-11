@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   const p = await getPage(params.id);
   let keywords = ''
   let description = ''
-  Object.entries(p!.properties).forEach(([key, value]) => {
+  Object.entries(p?.properties || {}).forEach(([key, value]) => {
     switch (value.type) {
       case PAGE_TYPES.MULTI_SELECT:
         if (key === 'meta') {
@@ -41,12 +41,17 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
         break;
     }
   });
-
+  const getShortcutIcon =(icon: string) => {
+    return `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>${icon}</text></svg>`
+    }
   return { 
     title: p?.properties.Name.type == PAGE_TYPES.TITLE ? p?.properties.Name.title[0].plain_text : 'notion with nextjs',
     keywords,
     viewport: 'width=device-width, initial-scale=1.0, user-scalable=no,minimum-scale=1.0, maximum-scale=1.0',
     description,
+    icons: {
+      shortcut: getShortcutIcon(p?.icon?.type === PAGE_TYPES.EMOJI && p.icon.emoji || "🇨🇳"),
+    },
    }
 }
 
@@ -56,7 +61,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const [blocks, pageInfo] = await Promise.all([bc, p]);
 
   // Filter out meta and description
-  const properties = Object.entries(pageInfo!.properties).filter(([key]) => key !== 'meta' && key !== 'description');
+  const properties = Object.entries(pageInfo?.properties || {}).filter(([key]) => key !== 'meta' && key !== 'description');
 
 
   return (
