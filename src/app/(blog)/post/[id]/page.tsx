@@ -29,12 +29,12 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     switch (value.type) {
       case PAGE_TYPES.MULTI_SELECT:
         if (key === 'meta') {
-          keywords = value.multi_select.map(v => v.name).join(',')
+          keywords = value.multi_select?.map(v => v.name).join(',')
         }
         break;
       case PAGE_TYPES.RICH_TEXT:
         if (key === 'description') {
-          description = value.rich_text[0].plain_text
+          description = value.rich_text[0]?.plain_text
         }
         break;
       default:
@@ -65,7 +65,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
 
   return (
-    <div className="w-full">
+    <div className="overflow-y-scroll h-[calc(100vh-56px)]" id="container">
       <div className="w-full md:w-[70%] md:mx-auto">
         <Image
           className="w-full h-[30vh] object-cover opacity-100 block md:rounded-3xl"

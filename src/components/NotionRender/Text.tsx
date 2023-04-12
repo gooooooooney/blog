@@ -17,11 +17,11 @@ const Text: React.FC<TextProps> = ({ block }: TextProps) => {
       // if ((block.heading_1 as any).is_toggleable) {
 
       // }
-      return <div className="mt-[1.8em]"><RichText className='text-[1.875em] font-bold' rich_text={block.heading_1.rich_text}></RichText></div>;
+      return <div data-outline="heading_1" id={block.id} className="mt-[1.8em]"><RichText className='text-[1.875em] font-bold' rich_text={block.heading_1.rich_text}></RichText></div>;
     case BLOCK_TYPES.HEADING_2:
-      return <div className="mt-[1.4em]"><RichText className='text-[1.5em] font-bold' rich_text={block.heading_2.rich_text}></RichText></div>;
+      return <div data-outline="heading_2" id={block.id} className="mt-[1.4em]"><RichText className='text-[1.5em] font-bold' rich_text={block.heading_2.rich_text}></RichText></div>;
     case BLOCK_TYPES.HEADING_3:
-      return <div className="mt-[1em]"><RichText className='text-[1.25em] font-bold' rich_text={block.heading_3.rich_text}></RichText></div>;
+      return <div data-outline="heading_3" id={block.id} className="mt-[1em]"><RichText className='text-[1.25em] font-bold' rich_text={block.heading_3.rich_text}></RichText></div>;
     default:
       return null;
   }
