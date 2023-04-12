@@ -24,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={cn(inter.className)}>
-      <body className="bg-slate-50 text-[14px] md:text-[16px] overflow-hidden text-slate-900 dark:text-slate-50 dark:bg-slate-900 antialiased">
+    <html lang="en" className={cn(inter.className,"text-[16px]")}>
+      <body className="bg-slate-50 text-sm md:text-base overflow-hidden text-slate-900 dark:text-slate-50 dark:bg-slate-900 antialiased">
         <Providers>
           <Navbar />
           <Toaster position='bottom-center' />
