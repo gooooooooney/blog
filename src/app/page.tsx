@@ -9,7 +9,7 @@ export const revalidate = 10;
 export default async function Home() {
   const data = await getPages();
   return (
-    <main  className="flex h-screen flex-col px-4  md:px-40 pt-10 min-h-screen overflow-y-scroll">
+    <main  className="flex h-screen flex-col px-4 md:mx-auto md:max-w-[80%]  md:px-40 pt-10 min-h-screen overflow-y-scroll">
       <Cards results={data!}/>
     </main>
   )

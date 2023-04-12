@@ -29,7 +29,7 @@ const Card: React.FC<CardProps> = ({
       {
         imgSrc && imgAlt && <div className="md:max-w-sm max-w-full">
           <Image
-          className="object-cover h-[20vh] object-center-right-notion"
+          className="object-cover h-[20vh] object-center-right-notion w-full"
           alt={imgAlt}
           src={imgSrc}
           height={imgHeight}
