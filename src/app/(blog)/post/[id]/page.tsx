@@ -12,14 +12,16 @@ import { DayFormat } from "@/constants/day";
 import { Metadata } from "next";
 import ModalLogin from "@/components/ModalLogin";
 
-export async function generateStaticParams() {
-  const data = await getPublicPages();
-  return data?.map((page) => ({
-    params: {
-      id: page.id,
-    },
-  }));
-}
+// export async function generateStaticParams() {
+//   const data = await getPublicPages();
+//   return data?.map((page) => ({
+//     params: {
+//       id: page.id,
+//     },
+//   }));
+// }
+
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const p = await getPage(params.id);
@@ -54,8 +56,12 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     },
   }
 }
+type Props = {
+  params: { id: string },
+  searchParams: { [key: string]: string | string[] | undefined }
+}
 
-export default async function Page({ params, searchParams }: { params: { id: string }, searchParams: { [key: string]: string | string[] | undefined }}) {
+export default async function Page({ params, searchParams }: Props) {
   const bc = getBlocks(params.id);
   const p = getPage(params.id);
   
