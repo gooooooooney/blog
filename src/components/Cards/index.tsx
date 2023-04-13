@@ -13,7 +13,7 @@ interface CardsProps {
 const Cards: React.FC<CardsProps> = ({ results }) => {
 
   return (
-    <div className="flex items-center">
+    // <div className="flex items-center md:mx-auto">
       <div className=" md:flex justify-start md:items-center md:flex-wrap">
         {
           results?.map((page) => {
@@ -38,7 +38,7 @@ const Cards: React.FC<CardsProps> = ({ results }) => {
           })
         }
       </div>
-    </div>
+    // </div>
   );
 };
 

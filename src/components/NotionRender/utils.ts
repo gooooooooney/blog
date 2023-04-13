@@ -41,7 +41,7 @@ export const getClassNamesByAnnotation = (annotations: RichTextItemResponse['ann
     className += ' underline';
   }
   if (annotations.code) {
-    className += ' bg-gray-200 dark:bg-gray-800 rounded-md text-[#EB5757] rounded-sm px-[.4em] py-[.1em]';
+    className += ' bg-gray-200 dark:bg-gray-800 rounded-md text-[#EB5757] text-[85%] rounded-sm px-[.4em] py-[.1em]';
   }
   if (annotations.color !== 'default') {
     const color = annotations.color;
