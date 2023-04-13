@@ -10,8 +10,10 @@ export const revalidate = 10;
 export default async function Home() {
   const data = await getPublicPages();
   return (
-    <main  className="flex h-screen flex-col px-4 md:mx-auto md:max-w-[80%]  md:px-40 pt-10 min-h-screen overflow-y-scroll">
+    <main  className="overflow-y-scroll h-screen min-h-screen pt-11">
+      <div className="flex  flex-col  px-4 md:mx-auto md:max-w-[80%]  md:px-40 pt-10  ">
       <Cards results={data!}/>
+      </div>
     </main>
   )
 }

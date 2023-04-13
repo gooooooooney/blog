@@ -14,7 +14,7 @@ const Cards: React.FC<CardsProps> = ({ results }) => {
 
   return (
     // <div className="flex items-center md:mx-auto">
-      <div className=" md:flex justify-start md:items-center md:flex-wrap">
+      <div className=" md:flex justify-start md:items-center md:flex-wrap mb-6">
         {
           results?.map((page) => {
 
