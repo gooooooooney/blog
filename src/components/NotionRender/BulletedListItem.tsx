@@ -7,10 +7,10 @@ interface BulletedListItemProps {
 
 const BulletedListItem: React.FC<BulletedListItemProps> = ({block} : BulletedListItemProps ) => {
   return (
-    <div className="flex items-center ">
-        <div className="flex py-1 items-center justify-center text-gray-700 text-[1.5em] dark:text-gray-400 leading-[1]  mx-2">-</div>
-        <div className="flex-1">
-          <RichText rich_text={block.bulleted_list_item.rich_text}></RichText>
+    <div className="flex items-center pl-4">
+        {/* <div className="flex py-1 items-center justify-center text-gray-700 text-[1.5em] dark:text-gray-400 leading-[1]  mx-2">-</div> */}
+        <div className="flex-1 relative before:content-['-'] before:text-[#999] before:absolute before:-ml-4">
+          <RichText className="" rich_text={block.bulleted_list_item.rich_text}></RichText>
         </div>
       </div>
   );

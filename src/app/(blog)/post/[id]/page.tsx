@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 }
 type Props = {
   params: { id: string },
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams?: { [key: string]: string | string[] | undefined }
 }
 
 export default async function Page({ params, searchParams }: Props) {
