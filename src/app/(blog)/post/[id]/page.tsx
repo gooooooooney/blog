@@ -1,19 +1,19 @@
 import { PAGE_TYPES } from "@/constants/notion/pageTypes";
 import { getBlocks } from "@/lib/notion/getBlocks";
 import { getPage } from "@/lib/notion/getPage";
-import { getPages } from "@/lib/notion/getPages";
+import { getPublicPages } from "@/lib/notion/getPages";
 import Image from "next/image";
 import NotionRender from "@/components/NotionRender";
-import RichText from "@/components/NotionRender/RichText";
 import { cn } from "@/lib/utils";
 import { Icons } from "@/components/Icons";
 import dayjs from 'dayjs'
 import Divider from "@/components/NotionRender/Dividder";
 import { DayFormat } from "@/constants/day";
 import { Metadata } from "next";
+import ModalLogin from "@/components/ModalLogin";
 
 export async function generateStaticParams() {
-  const data = await getPages();
+  const data = await getPublicPages();
   return data?.map((page) => ({
     params: {
       id: page.id,
@@ -41,10 +41,10 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
         break;
     }
   });
-  const getShortcutIcon =(icon: string) => {
+  const getShortcutIcon = (icon: string) => {
     return `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>${icon}</text></svg>`
-    }
-  return { 
+  }
+  return {
     title: p?.properties.Name.type == PAGE_TYPES.TITLE ? p?.properties.Name.title[0].plain_text : 'notion with nextjs',
     keywords,
     viewport: 'width=device-width, initial-scale=1.0, user-scalable=no,minimum-scale=1.0, maximum-scale=1.0',
@@ -52,17 +52,24 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     icons: {
       shortcut: getShortcutIcon(p?.icon?.type === PAGE_TYPES.EMOJI && p.icon.emoji || "🇨🇳"),
     },
-   }
+  }
 }
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params, searchParams }: { params: { id: string }, searchParams: { [key: string]: string | string[] | undefined }}) {
   const bc = getBlocks(params.id);
   const p = getPage(params.id);
+  
   const [blocks, pageInfo] = await Promise.all([bc, p]);
+  const hasPermission = pageInfo?.properties.password.type === PAGE_TYPES.RICH_TEXT && pageInfo.properties.password.rich_text[0]?.plain_text === searchParams?.password
 
   // Filter out meta and description
   const properties = Object.entries(pageInfo?.properties || {}).filter(([key]) => key !== 'meta' && key !== 'description');
 
+  if (!hasPermission) {
+    return <div className="md:w-1/2 mx-auto flex justify-center items-center mt-10 " >
+      <ModalLogin/>
+    </div>
+  }
 
   return (
     <div className="overflow-y-scroll h-[calc(100vh-56px)]" id="container">
@@ -157,7 +164,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             })
           }
         </div>
-        <Divider/>
+        <Divider />
         <div>
           {blocks?.map((block) => {
             return (

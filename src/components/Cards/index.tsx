@@ -16,7 +16,7 @@ const Cards: React.FC<CardsProps> = ({ results }) => {
     <div className="flex items-center">
       <div className=" md:flex justify-start md:items-center md:flex-wrap">
         {
-          (results).map((page) => {
+          results?.map((page) => {
 
             return (
               <Card

@@ -1,4 +1,9 @@
 'use client'
-export  { Spinner } from "flowbite-react";
-export { Card as FCard } from "flowbite-react";
-export { Button } from "flowbite-react";
+export {
+  Spinner,
+  Modal,
+  Card as FCard,
+  Button,
+  TextInput,
+  Label,
+} from "flowbite-react";
