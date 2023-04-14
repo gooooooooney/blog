@@ -31,8 +31,10 @@ const NotionRender: React.FC<NotionRenderProps> = ({ block }: NotionRenderProps)
     case BLOCK_TYPES.HEADING_3:
       return <Text block={block} />
     case BLOCK_TYPES.BULLETED_LIST_ITEM:
+      {/* @ts-expect-error Async Server Component */}
       return <BulletedListItem block={block} />
     case BLOCK_TYPES.NUMBERED_LIST_ITEM:
+      {/* @ts-expect-error Async Server Component */}
       return <NumberedListItem block={block} />
     case BLOCK_TYPES.TOGGLE:
       {/* @ts-expect-error Async Server Component */}

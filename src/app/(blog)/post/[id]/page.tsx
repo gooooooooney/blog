@@ -96,7 +96,7 @@ export default async function Page({ params, searchParams }: Props) {
           </div>
         </div>
       </div>
-      <div className="max-w-[90%] md:max-w-[50%] mx-auto pb-[5vh]">
+      <div className="max-w-[90%] md:max-w-[60%] mx-auto pb-[5vh]">
         <div className="mb-3">
           {
             // TODO properties
@@ -170,7 +170,7 @@ export default async function Page({ params, searchParams }: Props) {
             })
           }
         </div>
-        <Divider />
+        <Divider className="my-6"/>
         <div>
           {blocks?.map((block) => {
             return (
