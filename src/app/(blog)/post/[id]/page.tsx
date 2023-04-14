@@ -7,10 +7,10 @@ import NotionRender from "@/components/NotionRender";
 import { cn } from "@/lib/utils";
 import { Icons } from "@/components/Icons";
 import dayjs from 'dayjs'
-import Divider from "@/components/NotionRender/Dividder";
 import { DayFormat } from "@/constants/day";
 import { Metadata } from "next";
 import ModalLogin from "@/components/ModalLogin";
+import Divider from "@/components/NotionRender/Divider";
 
 // export async function generateStaticParams() {
 //   const data = await getPublicPages();
@@ -174,7 +174,7 @@ export default async function Page({ params, searchParams }: Props) {
         <div>
           {blocks?.map((block) => {
             return (
-              <div key={block.id}>
+              <div key={block.id} data-block-id={block.id}>
                 <NotionRender block={block} />
               </div>
             )

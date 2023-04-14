@@ -8,13 +8,14 @@ import Quote from "./Quote";
 import Callout from "./Callout";
 import NotionImage from "./Image";
 import Toggle from "./Toggle";
-import Divider from "./Dividder";
+import Divider from "./Divider";
 interface NotionRenderProps {
   block: BlockObjectResponse
 }
 
+// to help render the order number of the ordered list.
+let continuous = 0;
 const NotionRender: React.FC<NotionRenderProps> = ({ block }: NotionRenderProps) => {
-
   const renderCode = (block: CodeBlockObjectResponse) => {
     const code = block.code;
     return (
@@ -23,7 +24,10 @@ const NotionRender: React.FC<NotionRenderProps> = ({ block }: NotionRenderProps)
       </Code>
     )
   }
-
+  // reset the serial number if the next block is not an ordered list.
+  if (block.type !== BLOCK_TYPES.NUMBERED_LIST_ITEM) {
+    continuous = 0
+  }
   switch (block.type) {
     case BLOCK_TYPES.PARAGRAPH:
     case BLOCK_TYPES.HEADING_1:
@@ -34,8 +38,9 @@ const NotionRender: React.FC<NotionRenderProps> = ({ block }: NotionRenderProps)
       {/* @ts-expect-error Async Server Component */}
       return <BulletedListItem block={block} />
     case BLOCK_TYPES.NUMBERED_LIST_ITEM:
+      continuous += 1
       {/* @ts-expect-error Async Server Component */}
-      return <NumberedListItem block={block} />
+      return <NumberedListItem orderNumber={continuous} block={block} />
     case BLOCK_TYPES.TOGGLE:
       {/* @ts-expect-error Async Server Component */}
       return <Toggle block={block} ></Toggle>

@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.icon{
+
+  .icon {
   user-select: none;
     transition: background 20ms ease-in 0s;
     cursor: pointer;
@@ -18,4 +19,11 @@
     margin-bottom: 0px;
     margin-top: -42px;
     pointer-events: auto;
+}
+
+.order-list::before {
+  content: attr(data-order);
+  position: absolute;
+  margin-left: -1rem;
+  top:.25rem;
 }

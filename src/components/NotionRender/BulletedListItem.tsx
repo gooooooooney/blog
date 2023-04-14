@@ -14,7 +14,7 @@ const BulletedListItem = async ({block} : BulletedListItemProps ) => {
     return (
       <div className="flex items-center pl-4">
         <div className="flex-1 relative before:content-['-'] before:text-[#999] before:absolute before:-ml-4">
-          <RichText className="" rich_text={block.bulleted_list_item.rich_text}></RichText>
+          <RichText  rich_text={block.bulleted_list_item.rich_text}></RichText>
           <div className="ml-[1em]">
             {
               block.has_children && children?.map((block) => {
@@ -32,7 +32,7 @@ const BulletedListItem = async ({block} : BulletedListItemProps ) => {
   return (
     <div className="flex items-center pl-4">
         <div className="flex-1 relative before:content-['-'] before:text-[#999] before:absolute before:-ml-4">
-          <RichText className="" rich_text={block.bulleted_list_item.rich_text}></RichText>
+          <RichText  rich_text={block.bulleted_list_item.rich_text}></RichText>
         </div>
       </div>
   );
