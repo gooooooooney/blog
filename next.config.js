@@ -26,6 +26,12 @@ const nextConfig = {
         port: '',
         pathname: '/secure.notion-static.com/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   

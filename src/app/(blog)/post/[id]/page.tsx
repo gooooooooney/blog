@@ -4,9 +4,9 @@ import { getPage } from "@/lib/notion/getPage";
 import { getPublicPages } from "@/lib/notion/getPages";
 import Image from "next/image";
 import NotionRender from "@/components/NotionRender";
-import { cn } from "@/lib/utils";
+import { cn, formatLocalDate } from "@/lib/utils";
 import { Icons } from "@/components/Icons";
-import dayjs from 'dayjs'
+
 import { DayFormat } from "@/constants/day";
 import { Metadata } from "next";
 import ModalLogin from "@/components/ModalLogin";
@@ -122,7 +122,7 @@ export default async function Page({ params, searchParams }: Props) {
                       <p className="mr-5">
                         <Icons.CalendarDays />
                       </p>
-                      <p>{dayjs(value.created_time).format(DayFormat.GENERAl_WITH_DAY_OF_WEEK)}</p>
+                      <p>{formatLocalDate(value.created_time, DayFormat.GENERAl_WITH_DAY_OF_WEEK)}</p>
                     </div>
                   )
                 // case PAGE_TYPES.DATE:
