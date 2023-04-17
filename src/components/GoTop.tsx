@@ -14,7 +14,7 @@ const GoTop: React.FC = () => {
   }
   return (
     <div onClick={() => scrollToTop()} className="fixed bottom-10 right-10 cursor-pointer">
-      <div className="w-9 h-9 flex justify-center items-center shadow-md rounded-full z-[999] backdrop-blur-lg backdrop-saturate-[180%] border border-solid dark:border-gray-600">
+      <div className="w-9 h-9 flex justify-center items-center shadow-md rounded-full z-[999] backdrop-blur-sm backdrop-saturate-[180%] border border-solid dark:border-gray-600">
         <Icons.ArrowUp />
       </div>
     </div>

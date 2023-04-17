@@ -11,6 +11,7 @@ import { DayFormat } from "@/constants/day";
 import { Metadata } from "next";
 import ModalLogin from "@/components/ModalLogin";
 import Divider from "@/components/NotionRender/Divider";
+import { getTagsColor } from "@/components/NotionRender/utils";
 
 // export async function generateStaticParams() {
 //   const data = await getPublicPages();
@@ -47,7 +48,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     return `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>${icon}</text></svg>`
   }
   return {
-    title: p?.properties.Name.type == PAGE_TYPES.TITLE ? p?.properties.Name.title[0].plain_text : 'notion with nextjs',
+    title: p?.properties.Name.type == PAGE_TYPES.TITLE ? p?.properties.Name.title[0]?.plain_text : 'notion with nextjs',
     keywords,
     viewport: 'width=device-width, initial-scale=1.0, user-scalable=no,minimum-scale=1.0, maximum-scale=1.0',
     description,
@@ -92,7 +93,7 @@ export default async function Page({ params, searchParams }: Props) {
         <div className="">
           <div className="h-16 w-16 text-7xl max-w-full -mt-[2.2rem]">{pageInfo?.icon?.type === PAGE_TYPES.EMOJI && <span>{pageInfo.icon.emoji}</span>}</div>
           <div className="my-10">
-            <h1 className="text-[2em] leading-[1] font-bold">{pageInfo?.properties.Name.type == PAGE_TYPES.TITLE ? pageInfo?.properties.Name.title[0].plain_text : ''}</h1>
+            <h1 className="text-[2em] leading-[1] font-bold">{pageInfo?.properties.Name.type == PAGE_TYPES.TITLE ? pageInfo?.properties.Name.title[0]?.plain_text : ''}</h1>
           </div>
         </div>
       </div>
@@ -148,19 +149,8 @@ export default async function Page({ params, searchParams }: Props) {
                       </p>
                       <p>{value.multi_select.map(v => {
                         //  "default" | "gray" | "brown" | "orange" | "yellow" | "green" | "blue" | "purple" | "pink" | "red";
-                        const colors = {
-                          "default": "bg-gray-400",
-                          "gray": "bg-gray-400",
-                          "brown": "bg-brown-400",
-                          "orange": "bg-orange-400",
-                          "yellow": "bg-yellow-400",
-                          "green": "bg-green-400",
-                          "blue": "bg-blue-400",
-                          "purple": "bg-purple-400",
-                          "pink": "bg-pink-400",
-                          "red": "bg-red-400",
-                        }
-                        return <span key={v.id} className={cn("p-1 rounded-sm mr-2", colors[v.color])}>{v.name}</span>
+
+                        return <span key={v.id} className={cn("p-1 rounded-sm mr-2", getTagsColor(v.color))}>{v.name}</span>
                       })}</p>
                     </div>
                   )

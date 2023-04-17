@@ -25,11 +25,11 @@ const Card: React.FC<CardProps> = ({
 
   return (
     <Link
-      href={href} className={cn('flex rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800 flex-col', props.className)}>
+      href={href} className={cn('flex transition-colors rounded-2xl hover:bg-[rgba(255,255,255,.5)] hover:dark:bg-[rgba(0,0,0,.3)] flex-col', props.className)}>
       {
-        imgSrc && imgAlt && <div className="md:max-w-sm max-w-full">
+        imgSrc && imgAlt && <div className="max-w-full">
           <Image
-          className="object-cover h-[20vh] object-center-right-notion w-full"
+          className="object-cover rounded-2xl h-[20vh] object-center-right-notion w-full"
           alt={imgAlt}
           src={imgSrc}
           height={imgHeight}

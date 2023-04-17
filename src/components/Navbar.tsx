@@ -14,7 +14,7 @@ const Navbar: React.FC<any> = () => {
   const isDark = theme === 'dark'
   const Dark = isDark ? Icons.Moon : Icons.Sun
   return (
-    <div className='sticky top-0 z-[999] backdrop-blur-lg backdrop-saturate-[180%] '>
+    <div className='sticky top-0 z-[999] backdrop-blur-sm backdrop-saturate-[180%] '>
       <NavbarUI
       style={{background: 'none'}}
         // className="w-full fixed backdrop-blur-sm bg-white/75 dark:bg-slate-900/75 z-50 top-0 right-0 h-20 border-b border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-start"
