@@ -49,7 +49,7 @@ const Cards: React.FC<CardsProps> = ({ results }) => {
                   {page.properties.description.type === PAGE_TYPES.RICH_TEXT && <RichText rich_text={page.properties.description.rich_text} />}
                 </p>
                 {
-                  page.properties.create_time?.type === PAGE_TYPES.CREATED_TIME && <p>{formatLocalDate(page.properties.create_time.created_time, DayFormat.GENERAl_WITH_DAY_OF_WEEK)}</p>
+                  page.properties.create_time?.type === PAGE_TYPES.CREATED_TIME && <p>{formatLocalDate(page.properties.create_time.created_time, DayFormat.ENGLISH)}</p>
                 }
                 {
                   page.properties.category?.type === PAGE_TYPES.MULTI_SELECT && <div className="flex items-center">

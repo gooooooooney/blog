@@ -89,7 +89,7 @@ export default async function Page({ params, searchParams }: Props) {
           alt="cover image"
         />
       </div>
-      <div className="max-w-[90%] mx-auto md:max-w-[50%]">
+      <div className="max-w-[90%] mx-auto md:max-w-[60%]">
         <div className="">
           <div className="h-16 w-16 text-7xl max-w-full -mt-[2.2rem]">{pageInfo?.icon?.type === PAGE_TYPES.EMOJI && <span>{pageInfo.icon.emoji}</span>}</div>
           <div className="my-10">
@@ -123,7 +123,7 @@ export default async function Page({ params, searchParams }: Props) {
                       <p className="mr-5">
                         <Icons.CalendarDays />
                       </p>
-                      <p>{formatLocalDate(value.created_time, DayFormat.GENERAl_WITH_DAY_OF_WEEK)}</p>
+                      <p>{formatLocalDate(value.created_time, DayFormat.ENGLISH)}</p>
                     </div>
                   )
                 // case PAGE_TYPES.DATE:
