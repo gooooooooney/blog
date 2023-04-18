@@ -1,6 +1,6 @@
 import { BLOCK_TYPES } from "@/constants/notion/blockTypes";
 import { BlockObjectResponse, CodeBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import Code from "../Code";
+import Code from "./Code";
 import { Text } from "./Text";
 import BulletedListItem from "./BulletedListItem";
 import NumberedListItem from "./NumberedListItem";
@@ -16,14 +16,6 @@ interface NotionRenderProps {
 // to help render the order number of the ordered list.
 let continuous = 0;
 const NotionRender: React.FC<NotionRenderProps> = ({ block }: NotionRenderProps) => {
-  const renderCode = (block: CodeBlockObjectResponse) => {
-    const code = block.code;
-    return (
-      <Code language={code.language}>
-        {code.rich_text[0].plain_text}
-      </Code>
-    )
-  }
   // reset the serial number if the next block is not an ordered list.
   if (block.type !== BLOCK_TYPES.NUMBERED_LIST_ITEM) {
     continuous = 0
@@ -35,14 +27,14 @@ const NotionRender: React.FC<NotionRenderProps> = ({ block }: NotionRenderProps)
     case BLOCK_TYPES.HEADING_3:
       return <Text block={block} />
     case BLOCK_TYPES.BULLETED_LIST_ITEM:
-      {/* @ts-expect-error Async Server Component */}
+      {/* @ts-expect-error Async Server Component */ }
       return <BulletedListItem block={block} />
     case BLOCK_TYPES.NUMBERED_LIST_ITEM:
       continuous += 1
-      {/* @ts-expect-error Async Server Component */}
+      {/* @ts-expect-error Async Server Component */ }
       return <NumberedListItem orderNumber={continuous} block={block} />
     case BLOCK_TYPES.TOGGLE:
-      {/* @ts-expect-error Async Server Component */}
+      {/* @ts-expect-error Async Server Component */ }
       return <Toggle block={block} ></Toggle>
 
     case BLOCK_TYPES.QUOTE:
@@ -70,7 +62,12 @@ const NotionRender: React.FC<NotionRenderProps> = ({ block }: NotionRenderProps)
     // case BLOCK_TYPES.VIDEO:
 
     case BLOCK_TYPES.CODE:
-      return renderCode(block)
+      const code = block.code;
+      return (
+        <Code language={code.language}>
+          {code.rich_text[0].plain_text}
+        </Code>
+      )
     // case BLOCK_TYPES.FILE:
 
     // case BLOCK_TYPES.PDF:

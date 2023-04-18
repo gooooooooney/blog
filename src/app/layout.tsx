@@ -25,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={cn(inter.className,"text-[16px]")}>
-      <body className="bg-[#EEF2E6] text-sm md:text-base overflow-hidden text-slate-900 dark:text-slate-50 dark:bg-[#2C3639] antialiased">
+      <body className="bg-[#fff] text-sm md:text-base overflow-hidden text-slate-900 dark:text-slate-50 dark:bg-[#1B2430] antialiased">
         <Providers>
           <Navbar />
           <Toaster position='bottom-center' />
