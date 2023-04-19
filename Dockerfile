@@ -13,13 +13,14 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 # 使用apk命令安装 nodejs 和 pnpm
 RUN apk add --no-cache --update nodejs-current
 
-RUN curl -f https://get.pnpm.io/v8.3.js | node - add --global pnpm
+RUN apk add --no-cache git
+
+RUN npm install -g pnpm
 
 # 2. 基于基础镜像安装项目依赖
 FROM base AS install
 
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm fetch --prod
 
 RUN pnpm install
 
