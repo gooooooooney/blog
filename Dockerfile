@@ -11,7 +11,7 @@ WORKDIR $APP_PATH
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 # 使用apk命令安装 nodejs 和 pnpm
-RUN apk add --no-cache --update nodejs=16.14.2-r0
+RUN apk add --no-cache --update nodejs-current
 
 RUN curl -f https://get.pnpm.io/v8.3.js | node - add --global pnpm
 
