@@ -19,6 +19,7 @@ RUN curl -f https://get.pnpm.io/v8.3.js | node - add --global pnpm
 FROM base AS install
 
 COPY package.json pnpm-lock.yaml ./
+RUN pnpm fetch --prod
 
 RUN pnpm install
 
