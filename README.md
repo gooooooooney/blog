@@ -1,38 +1,103 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+ <h1>Notion-Blog-NextJS</h1>
+ English / [简体中文](./README_CN.md)
+ This is the source code for my personal blog, built with Notion API and Next.js.
+</div>
 
-## Getting Started
 
-First, run the development server:
+## Why use Notion API and Next.js?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+Building your own blog is a common requirement for many people learning React. Using Next.js 13's brand new routing system and Notion API can help you achieve this goal and bring many additional benefits.
+
+First, using Next.js 13's brand new routing system can bring more flexible and excellent routing definition methods. The previous routing system required creating files in the pages directory to define the routing, but now you can define the routing anywhere in the project. This approach can make the project structure clearer and the routing definition more flexible. This is also one of the reasons why many people choose to use Next.js 13 to build their own blogs.
+
+In addition, using Notion API can easily display Notion's page data as the content of the blog. This feature is very practical because Notion is a powerful document and database tool that can help you manage and organize blog content. Using Notion API can easily display this content in the blog without the need for manual copying and pasting.
+
+Finally, building your own blog can also help you better learn React and Next.js. By building a blog yourself, you can more deeply understand the characteristics and advantages of these technologies, and can discover and solve some problems in practice. This is very helpful for learning React and Next.js and can also lay a good foundation for your future work.
+
+In short, using Next.js 13's brand new routing system and Notion API to build your own blog is a very good choice. This can not only realize your blog dream but also help you better learn and master React and Next.js.
+
+
+## Main features
+
+- Build a blog using Next.js 13's brand new routing system, flexibly define routing, and make the project structure clearer;
+- Use Notion API to display Notion's page data as the content of the blog, which is convenient for managing and organizing blog content;
+- The homepage of the blog displays a list of articles, and clicking the article title takes you to the article details page;
+- The article details page displays the title, release time, and body content of the article;
+- The blog page is beautifully designed and responsive, adapting to different devices and screen sizes;
+- Deploy using Vercel, customizable domain name, and easy to share and access.
+
+These functions cover the basic requirements of the blog and use some features of Next.js 13 and Notion API. If you have other requirements, you can also modify and extend them as needed.
+
+## Installation
+
+1. Clone this project:
+
+```
+git clone <https://github.com/gooooooooney/blog.git>
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Enter the project directory and install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+cd blog
+pnpm install
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. Add Notion API token and database ID to the `.env` file:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+NOTION_API_KEY=your_notion_api_key
+NOTION_DATABASE_ID=your_notion_database_id
 
-## Learn More
+```
 
-To learn more about Next.js, take a look at the following resources:
+1. Start the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+pnpm dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
 
-## Deploy on Vercel
+1. Access [http://localhost:3000](http://localhost:3000/) to view the blog page.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## How to deploy to Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This blog can be easily deployed to Vercel, a cloud platform for static sites and serverless functions. To deploy the blog, follow these steps:
+
+1. Create an account on Vercel and link it to your GitHub account.
+2. Import the repository into Vercel.
+3. Set the environment variables in Vercel by going to `Settings` > `Environment Variables` and adding the NOTION_API_KEY secret and the database ID NOTION_DATABASE_ID.
+4. Deploy the project to Vercel.
+
+## How to change the custom domain name in Vercel
+
+To change the custom domain name in Vercel, follow these steps:
+
+1. In Vercel, go to `Settings` > `Domains`.
+2. Click the `Add` button and follow the instructions to add a custom domain name.
+3. Go to your domain registrar and set up a CNAME record that points to the Vercel domain name.
+4. Wait for the DNS changes to propagate, which may take up to 24 hours. After the changes propagate, your custom domain name should be in effect.
+
+## File structure
+
+- `/app`: This directory contains all Next.js pages, including the home page and article pages.
+- `/public`: This directory contains all static assets, such as images and CSS files.
+- `/lib`: This directory contains tool libraries for getting data from the Notion API, processing search results, and other useful functions.
+- `/components`: This directory contains all React components used to render different parts of the blog.
+
+## Contribution
+
+If you want to contribute to this project, feel free to fork the repository and submit a pull request. Any form of contribution is welcome, whether it's fixing typos or adding new features.
+
+## License
+
+This project is released under the MIT license - see the [LICENSE](https://github.com/gooooooooney/blog/blob/main/LICENSE) file for details.
+
+## Contact
+
+If you have any questions or comments about this project, feel free to contact me through my [website](https://gooney-blog.vercel.app/) or [GitHub](https://github.com/gooooooooney).
+
+This README.md was generated by ChatGPT.
