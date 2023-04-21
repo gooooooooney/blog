@@ -3,9 +3,10 @@
 
 <div align="center">
  <h1>Notion-Blog-NextJS</h1>
- [English](./README.md) / 简体中文
  这是我个人博客的源代码，使用了 Notion API 和 Next.js 构建。
 </div>
+
+[English](./README.md) / 简体中文
 ## 为什么使用 Notion API 和 Next.js？
 
 搭建自己的博客是很多人学习 React 的一个常见需求。而使用 Next.js 13 的全新路由系统和 Notion API 可以帮助你实现这个目标，而且带来了许多额外的好处。

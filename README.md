@@ -2,6 +2,7 @@
  <h1>Notion-Blog-NextJS</h1>
  This is the source code for my personal blog, built with Notion API and Next.js.
 </div> 
+
 English / [简体中文](./README_CH.md)
 
 ## Why use Notion API and Next.js?
