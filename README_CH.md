@@ -1,5 +1,3 @@
-# Notion-Blog-NextJS
-
 
 <div align="center">
  <h1>Notion-Blog-NextJS</h1>
