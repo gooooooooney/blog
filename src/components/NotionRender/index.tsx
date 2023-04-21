@@ -9,13 +9,15 @@ import Callout from "./Callout";
 import NotionImage from "./Image";
 import Toggle from "./Toggle";
 import Divider from "./Divider";
-interface NotionRenderProps {
+import Table from "./Table";
+import TableRow from "./TableRow";
+interface NotionRenderProps extends React.HTMLAttributes<HTMLDivElement> {
   block: BlockObjectResponse
 }
 
 // to help render the order number of the ordered list.
 let continuous = 0;
-const NotionRender: React.FC<NotionRenderProps> = ({ block }: NotionRenderProps) => {
+const NotionRender: React.FC<NotionRenderProps> = ({ block, ...props }: NotionRenderProps) => {
   // reset the serial number if the next block is not an ordered list.
   if (block.type !== BLOCK_TYPES.NUMBERED_LIST_ITEM) {
     continuous = 0
@@ -72,6 +74,11 @@ const NotionRender: React.FC<NotionRenderProps> = ({ block }: NotionRenderProps)
 
     // case BLOCK_TYPES.PDF:
 
+    case BLOCK_TYPES.TABLE:
+      {/* @ts-expect-error Async Server Component */ }
+      return <Table block={block}/>
+    case BLOCK_TYPES.TABLE_ROW:
+      return <TableRow block={block} {...props} />
     default:
       return null;
   }

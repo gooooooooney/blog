@@ -17,7 +17,9 @@ const RichText: React.FC<RichTextProps> = ({ rich_text, ...props }: RichTextProp
             return text.text.link?.url ? <a key={text.plain_text} className={cn(getClassNamesByAnnotation(text.annotations), '!underline')} href={text.text.link.url}>{text.text.content}</a> :
               <span key={text.plain_text} className={getClassNamesByAnnotation(text.annotations)}>{text.text.content}</span>;
           case RICH_TEXT_TYPES.Equation:
-            return <span key={text.plain_text} className={getClassNamesByAnnotation(text.annotations)}>{text.equation.expression}</span>
+            return <span key={text.plain_text} style={{ 'font': 'normal 1.21em KaTeX_Main,Times New Roman,serif' }} className={cn(getClassNamesByAnnotation(text.annotations))}>
+              {text.equation.expression}
+            </span>
           case RICH_TEXT_TYPES.Mention:
             return <Mention mention={text.mention} />;
           default:
