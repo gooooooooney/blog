@@ -1,9 +1,8 @@
 <div align="center">
  <h1>Notion-Blog-NextJS</h1>
- English / <a href="./README_CN.md">简体中文</a>
  This is the source code for my personal blog, built with Notion API and Next.js.
 </div>
-
+English / [简体中文](https://xianbai.me/learn-md/article/syntax/links.html)
 
 ## Why use Notion API and Next.js?
 
