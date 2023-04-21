@@ -1,6 +1,6 @@
 <div align="center">
  <h1>Notion-Blog-NextJS</h1>
- English / [简体中文](./README_CN.md)
+ English / <a href="./README_CN.md">简体中文</a>
  This is the source code for my personal blog, built with Notion API and Next.js.
 </div>
 
