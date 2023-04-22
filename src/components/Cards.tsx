@@ -1,14 +1,12 @@
 
 import { PageObjectResponse, QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
-import { Card } from "../ui/Card";
 import { PAGE_TYPES } from "@/constants/notion/pageTypes";
-import RichText from "../NotionRender/RichText";
-import { Icons } from "../Icons";
 import { cn, formatLocalDate } from "@/lib/utils";
-import { getTagsColor } from "../NotionRender/utils";
 import { DayFormat } from "@/constants/day";
 import Link from "next/link";
 import Image from "next/image";
+import RichText from "./NotionRender/RichText";
+import { getTagsColor } from "./NotionRender/utils";
 
 
 interface CardsProps {
