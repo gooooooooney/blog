@@ -5,7 +5,8 @@ import {
   Copy,
   CalendarDays,
   Tags,
-  ArrowUp
+  ArrowUp,
+  SearchIcon,
 } from 'lucide-react'
 
 export const Icons = {
@@ -15,5 +16,6 @@ export const Icons = {
   Copy,
   CalendarDays,
   Tags,
-  ArrowUp
+  ArrowUp,
+  SearchIcon,
 }

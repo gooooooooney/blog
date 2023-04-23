@@ -1,18 +1,24 @@
 'use client'
-import { Navbar as NavbarUI } from 'flowbite-react';
 import Image from 'next/image';
 import { Icons } from './Icons';
 import { useTheme } from 'next-themes';
-
-// interface NavbarProps {
-//   children: React.ReactNode
-// }
+import {  Navbar as NavbarUI,TextInput } from './ui/Flowbite';
+import { useState } from 'react';
 
 const Navbar: React.FC<any> = () => {
 
   const { theme, setTheme } = useTheme()
+  const {searchParams} = new URL(window.location.href)
+  const query = searchParams.get('query') ?? ''
+  const [input, setInput] = useState(query)
   const isDark = theme === 'dark'
   const Dark = isDark ? Icons.Moon : Icons.Sun
+  const goToSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === 'Enter') {
+      if (e.currentTarget.value === '') return
+      window.location.href = `/search?query=${e.currentTarget.value}`
+    }
+  }
   return (
     <div className='sticky top-0 z-[999] backdrop-blur-sm backdrop-saturate-[180%] '>
       <NavbarUI
@@ -33,11 +39,14 @@ const Navbar: React.FC<any> = () => {
             />
           </div>
 
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+          <span className="hidden md:block self-center whitespace-nowrap text-xl font-semibold dark:text-white">
             {/* eslint-disable-next-line react/no-unescaped-entities */}
             gooney's blog
           </span>
         </NavbarUI.Brand>
+        <div className='md:w-[40%]'>
+          <TextInput value={input} onChange={(e) => setInput(e.target.value)}  onKeyDown={goToSearch} type='text' placeholder='通过标题搜索文章' rightIcon={Icons.SearchIcon} />
+        </div>
         <NavbarUI.Toggle />
         <NavbarUI.Collapse>
           <NavbarUI.Link

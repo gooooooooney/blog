@@ -1,6 +1,5 @@
 
 import { PageObjectResponse, QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
-import { Card } from "../ui/Card";
 import { PAGE_TYPES } from "@/constants/notion/pageTypes";
 import RichText from "../NotionRender/RichText";
 import { Icons } from "../Icons";
@@ -27,7 +26,7 @@ const Cards: React.FC<CardsProps> = ({ results }) => {
 
           return (
             <Link
-              className="flex transition-colors pb-3 rounded-2xl hover:bg-[rgba(255,255,255,.5)] hover:dark:bg-[rgba(0,0,0,.3)] flex-col"
+              className="flex transition-all pb-3 rounded-2xl hover:bg-[#dcdcdc60] flex-col"
               // className="basis-[30%] md:mr-[calc(10%/3)] mb-8 md:mb-[calc(10%/3)] md:[&:nth-child(3n)]:mr-0 "
               key={page.id}
               href={`/post/${page.id}`}
@@ -43,13 +42,13 @@ const Cards: React.FC<CardsProps> = ({ results }) => {
               </div>
               <div className="flex flex-col gap-4 p-2">
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white ">
-                  {page.properties.Name.type === PAGE_TYPES.TITLE && <RichText rich_text={page.properties.Name.title} />}
+                  {page.properties.title.type === PAGE_TYPES.TITLE && <RichText rich_text={page.properties.title.title} />}
                 </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400 ">
-                  {page.properties.description.type === PAGE_TYPES.RICH_TEXT && <RichText rich_text={page.properties.description.rich_text} />}
+                <p className="font-normal text-gray-700 dark:text-gray-400 line-clamp-2">
+                  {page.properties.description?.type === PAGE_TYPES.RICH_TEXT && <RichText rich_text={page.properties.description?.rich_text} />}
                 </p>
                 {
-                  page.properties.create_time?.type === PAGE_TYPES.CREATED_TIME && <p>{formatLocalDate(page.properties.create_time.created_time, DayFormat.ENGLISH)}</p>
+                  page.properties.create_time?.type === PAGE_TYPES.CREATED_TIME && <p>{formatLocalDate(page.properties.create_time?.created_time, DayFormat.ENGLISH)}</p>
                 }
                 {
                   page.properties.category?.type === PAGE_TYPES.MULTI_SELECT && <div className="flex items-center">

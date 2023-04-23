@@ -6,4 +6,5 @@ export {
   Button,
   TextInput,
   Label,
+  Navbar,
 } from "flowbite-react";

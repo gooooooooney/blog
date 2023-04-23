@@ -93,7 +93,7 @@ export default async function Page({ params, searchParams }: Props) {
         <div className="">
           <div className="h-16 w-16 text-7xl max-w-full -mt-[2.2rem]">{pageInfo?.icon?.type === PAGE_TYPES.EMOJI && <span>{pageInfo.icon.emoji}</span>}</div>
           <div className="my-10">
-            <h1 className="text-[2em] leading-[1] font-bold">{pageInfo?.properties.Name.type == PAGE_TYPES.TITLE ? pageInfo?.properties.Name.title[0]?.plain_text : ''}</h1>
+            <h1 className="text-[2em] leading-[1] font-bold">{pageInfo?.properties.title.type == PAGE_TYPES.TITLE ? pageInfo?.properties.title.title[0]?.plain_text : ''}</h1>
           </div>
         </div>
       </div>

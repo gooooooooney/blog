@@ -7,8 +7,28 @@ export const revalidate = 10;
 
 
 
-export default async function Home() {
-  const data = await getPublicPages();
+type Props = {
+  searchParams?: { [key: string]: string | string[] | undefined }
+}
+
+export default async function Home({searchParams}: Props) {
+   const { title, category } = searchParams || {}
+   let filter = undefined
+   if (category) {
+    filter = {
+      filter: {
+        and: [
+          {
+            property: 'category',
+            multi_select: {
+              contains: category as string || 'all',
+            },
+          },
+        ]
+      }
+    }
+   }
+  const data = await getPublicPages(filter);
 
   return (
     <main  className="overflow-y-scroll h-screen min-h-screen pb-32 pt-14">
