@@ -1,5 +1,5 @@
 
-import { PageObjectResponse, QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
+import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { PAGE_TYPES } from "@/constants/notion/pageTypes";
 import { cn, formatLocalDate } from "@/lib/utils";
 import { DayFormat } from "@/constants/day";

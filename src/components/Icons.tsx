@@ -6,7 +6,7 @@ import {
   CalendarDays,
   Tags,
   ArrowUp,
-  SearchIcon,
+  Search
 } from 'lucide-react'
 
 export const Icons = {
@@ -17,5 +17,5 @@ export const Icons = {
   CalendarDays,
   Tags,
   ArrowUp,
-  SearchIcon,
+  Search,
 }

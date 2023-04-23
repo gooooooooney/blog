@@ -22,7 +22,6 @@ const Navbar: React.FC<any> = () => {
   return (
     <div className='sticky top-0 z-[999] backdrop-blur-sm backdrop-saturate-[180%] '>
       <NavbarUI
-        // className="w-full fixed backdrop-blur-sm bg-white/75 dark:bg-slate-900/75 z-50 top-0 right-0 h-20 border-b border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-start"
         fluid={true}
         rounded={true}
       >
@@ -45,7 +44,7 @@ const Navbar: React.FC<any> = () => {
           </span>
         </NavbarUI.Brand>
         <div className='md:w-[40%]'>
-          <TextInput value={input} onChange={(e) => setInput(e.target.value)}  onKeyDown={goToSearch} type='text' placeholder='通过标题搜索文章' rightIcon={Icons.SearchIcon} />
+          <TextInput value={input} onChange={(e) => setInput(e.target.value)}  onKeyDown={goToSearch} type='text' placeholder='通过标题搜索文章' rightIcon={Icons.Search} />
         </div>
         <NavbarUI.Toggle />
         <NavbarUI.Collapse>
