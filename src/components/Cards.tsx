@@ -52,7 +52,7 @@ const Cards: React.FC<CardsProps> = ({ results }) => {
                 {
                   page.properties.category?.type === PAGE_TYPES.MULTI_SELECT && <div className="flex items-center">
                     <p>{page.properties.category.multi_select.map(v => {
-                      return <span key={v.id} className={cn("p-1 rounded-sm mr-2", getTagsColor(v.color))}>{v.name}</span>
+                      return <span key={v.id} className={cn("p-1 rounded-sm mr-2", getTagsColor(v.color))}><Link href={`/search?tag=${v.name}`}>{v.name}</Link></span>
                     })}</p>
                   </div>
                 }

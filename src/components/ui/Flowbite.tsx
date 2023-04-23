@@ -7,4 +7,5 @@ export {
   TextInput,
   Label,
   Navbar,
+  Checkbox,
 } from "flowbite-react";

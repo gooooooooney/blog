@@ -2,21 +2,24 @@
 import Image from 'next/image';
 import { Icons } from './Icons';
 import { useTheme } from 'next-themes';
-import {  Navbar as NavbarUI,TextInput } from './ui/Flowbite';
+import { Navbar as NavbarUI, TextInput, Checkbox, Label } from './ui/Flowbite';
 import { useState } from 'react';
 
 const Navbar: React.FC<any> = () => {
-
+  const hasWindow = typeof window !== 'undefined'
   const { theme, setTheme } = useTheme()
-  const {searchParams} = new URL(window.location.href)
-  const query = searchParams.get('query') ?? ''
+  const { searchParams } = new URL(hasWindow ? window.location.href : 'https://gooney-blog.vercel.app')
+  const query = searchParams.get('query') ?? searchParams.get('tag') ?? ''
   const [input, setInput] = useState(query)
+  const [useTag, setUseTag] = useState(!!searchParams.get('tag'))
   const isDark = theme === 'dark'
   const Dark = isDark ? Icons.Moon : Icons.Sun
   const goToSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === 'Enter') {
       if (e.currentTarget.value === '') return
-      window.location.href = `/search?query=${e.currentTarget.value}`
+      let query = `query=${e.currentTarget.value}`
+      if (useTag) query = `tag=${e.currentTarget.value}`
+      window.location.href = `/search?${query}`
     }
   }
   return (
@@ -43,8 +46,26 @@ const Navbar: React.FC<any> = () => {
             gooney's blog
           </span>
         </NavbarUI.Brand>
-        <div className='md:w-[40%]'>
-          <TextInput value={input} onChange={(e) => setInput(e.target.value)}  onKeyDown={goToSearch} type='text' placeholder='通过标题搜索文章' rightIcon={Icons.Search} />
+        <div className='w-1/2 md:2-full flex items-center'>
+          <div className='flex-grow'>
+            <TextInput value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={goToSearch} type='text' placeholder='通过标题或tag搜索文章' rightIcon={Icons.Search} />
+          </div>
+          <div className='ml-5'>
+            <Checkbox
+              id="tag"
+              className='mr-1'
+              checked={useTag}
+              onChange={() => setUseTag(!useTag)}
+              defaultChecked={true}
+            />
+            <Label
+              htmlFor="tag"
+              disabled={true}
+            >
+              按分类查找
+            </Label>
+          </div>
+
         </div>
         <NavbarUI.Toggle />
         <NavbarUI.Collapse>

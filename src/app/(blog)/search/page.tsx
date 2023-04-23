@@ -1,5 +1,6 @@
 import Cards from "@/components/Cards"
-import { getPagesByTitle } from "@/lib/notion/getPages"
+import { getPagesByTitle, getPublicPages } from "@/lib/notion/getPages"
+import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"
 
 
 
@@ -9,8 +10,28 @@ type Props = {
 }
 
 export default async function Page({searchParams}: Props) {
-   const { query } = searchParams || {}
-  const data = await getPagesByTitle(typeof query === 'string' ? query : undefined);
+  const { query, tag } = searchParams || {}
+  let data:PageObjectResponse[] | undefined = undefined
+  let filter = undefined
+  if (tag) {
+    filter = {
+      and: [
+        {
+          property: 'category',
+          multi_select: {
+            contains: tag as string || 'all',
+          },
+        },
+      ]
+    }
+    data = await getPublicPages({
+      filter
+    });
+  }
+  if (query) {
+    data = await getPagesByTitle(typeof query === 'string' ? query : undefined);
+  }
+  
 
   return (
     <main  className="overflow-y-scroll h-screen min-h-screen pb-32 pt-14">
