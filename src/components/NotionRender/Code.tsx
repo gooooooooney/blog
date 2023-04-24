@@ -47,7 +47,7 @@ const Code: React.FC<CodeProps> = ({ children, language = "javascript", caption,
   }, [children])
   return (
     <>
-      <pre className={cn("dark:!bg-[rgba(255,255,255)] dark:!bg-opacity-[0.03] !bg-[#f7f6f3] w-full min-w-0 text-left rounded-sm", `language-${language}`)} >
+      <pre className={cn("dark:!bg-[rgba(255,255,255)] overflow-x-auto dark:!bg-opacity-[0.03] !bg-[#f7f6f3] w-full min-w-0 text-left rounded-sm", `language-${language}`)} >
         <div className='flex justify-between items-center'>
           <p>{language}</p>
           <div className='notion-code-copy-button' onClick={onClickCopyToClipboard}>

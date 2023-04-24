@@ -22,7 +22,7 @@ import { getTagsColor } from "@/components/NotionRender/utils";
 //   }));
 // }
 
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const p = await getPage(params.id);
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     viewport: 'width=device-width, initial-scale=1.0, user-scalable=no,minimum-scale=1.0, maximum-scale=1.0',
     description,
     icons: {
-      shortcut: getShortcutIcon(p?.icon?.type === PAGE_TYPES.EMOJI && p.icon.emoji || "🇨🇳"),
+      shortcut: getShortcutIcon(p?.icon?.type === PAGE_TYPES.EMOJI && p.icon.emoji || "🐠"),
     },
   }
 }

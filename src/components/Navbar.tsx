@@ -31,7 +31,7 @@ const Navbar: React.FC<any> = () => {
         <NavbarUI.Brand
           to="/"
         >
-          <div className='flex justify-center items-center space-x-4 mr-3 h-6 sm:h-9'>
+          <div className=' flex justify-center items-center space-x-4 mr-3 h-6 sm:h-9'>
             <Image
               width={100}
               height={100}
@@ -46,7 +46,7 @@ const Navbar: React.FC<any> = () => {
             gooney's blog
           </span>
         </NavbarUI.Brand>
-        <div className='w-1/2 md:2-full flex items-center'>
+        <div className='w-1/2 md:2-full flex-grow md:flex-grow-0 flex items-center'>
           <div className='flex-grow'>
             <TextInput value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={goToSearch} type='text' placeholder='通过标题或tag搜索文章' rightIcon={Icons.Search} />
           </div>
@@ -56,7 +56,6 @@ const Navbar: React.FC<any> = () => {
               className='mr-1'
               checked={useTag}
               onChange={() => setUseTag(!useTag)}
-              defaultChecked={true}
             />
             <Label
               htmlFor="tag"

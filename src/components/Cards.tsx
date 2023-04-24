@@ -25,7 +25,7 @@ const Cards: React.FC<CardsProps> = ({ results }) => {
 
           return (
             <Link
-              className="flex transition-all pb-3 rounded-2xl hover:bg-[#dcdcdc60] flex-col"
+              className="flex transition-all first:mt-0 mt-5 md:mt-0 pb-3 rounded-2xl hover:bg-[#dcdcdc60] flex-col"
               // className="basis-[30%] md:mr-[calc(10%/3)] mb-8 md:mb-[calc(10%/3)] md:[&:nth-child(3n)]:mr-0 "
               key={page.id}
               href={`/post/${page.id}`}
