@@ -47,13 +47,13 @@ const NumberedListItem = async ({ block, orderNumber }: NumberedListItemProps) =
     const children = await getBlocks(block.id)
     return (
       <div className="flex items-center pl-4">
-        <div data-order={`${orderNumber}.`} className=" flex-1 relative order-list">
+        <div data-order={`${orderNumber}.`} className=" flex-1 relative order-list w-full">
           <RichText className="" rich_text={block.numbered_list_item.rich_text}></RichText>
           <div className="ml-[1em]">
             {
               block.has_children && children?.map((block) => {
                 return (
-                  <div key={block.id}>
+                  <div key={block.id} className="my-3">
                     <NotionRender block={block} />
                   </div>
                 )
@@ -65,7 +65,7 @@ const NumberedListItem = async ({ block, orderNumber }: NumberedListItemProps) =
   }
   return (
     <div className="flex items-center pl-4">
-      <div data-order={`${orderNumber}.`} className=" flex-1 relative order-list">
+      <div data-order={`${orderNumber}.`} className=" flex-1 relative order-list w-full">
         <RichText className="" rich_text={block.numbered_list_item.rich_text}></RichText>
       </div>
     </div>

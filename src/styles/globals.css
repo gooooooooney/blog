@@ -25,5 +25,5 @@
   content: attr(data-order);
   position: absolute;
   margin-left: -1rem;
-  top:.25rem;
+  top: 0;
 }

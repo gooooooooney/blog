@@ -26,7 +26,7 @@ interface CodeProps extends React.PropsWithChildren {
 }
 
 const Code: React.FC<CodeProps> = ({ children, language = "javascript", caption, ...props }: CodeProps) => {
-  language = language.toLowerCase() 
+  language = language.toLowerCase()
 
   const codeRef = useRef(null)
   useEffect(() => {
@@ -46,16 +46,17 @@ const Code: React.FC<CodeProps> = ({ children, language = "javascript", caption,
     })
   }, [children])
   return (
-    <>
-      <pre className={cn("dark:!bg-[rgba(255,255,255)] overflow-x-auto dark:!bg-opacity-[0.03] !bg-[#f7f6f3] w-full min-w-0 text-left rounded-sm", `language-${language}`)} >
+    <div className='relative my-4'>
+      <div className='absolute left-4 right-4 top-2'>
         <div className='flex justify-between items-center'>
           <p>{language}</p>
           <div className='notion-code-copy-button' onClick={onClickCopyToClipboard}>
             <Icons.Copy />
           </div>
         </div>
-
-        <code className={`language-${language === 'typescript' ? 'tsx' : language} p-8 pr-4 w-full block`} ref={codeRef}>
+      </div>
+      <pre className={cn("dark:!bg-[rgba(255,255,255)] !m-0 !p-0 dark:!bg-opacity-[0.1] !bg-[#f7f6f3] w-full min-w-0 text-left rounded-sm", `language-${language}`)} >
+        <code className={`language-${language === 'typescript' ? 'tsx' : language} px-4 pb-8 pt-10 w-full block overflow-auto`} ref={codeRef}>
           {children}
         </code>
         {caption && (
@@ -64,7 +65,7 @@ const Code: React.FC<CodeProps> = ({ children, language = "javascript", caption,
           </figcaption>
         )}
       </pre>
-    </>
+    </div>
   );
 };
 export default Code;
