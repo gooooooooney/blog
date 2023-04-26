@@ -149,8 +149,9 @@ export default async function Page({ params, searchParams }: Props) {
         data-page-id={params.id}
         data-page-url={`https://gooney-blog.vercel.app/${params.id}`}
         data-page-title={title}
+        data-theme="auto"
       ></div>
-      <script defer src="https://cusdis.com/js/widget/lang/zh-cn.js"></script>
+      {/* <script defer src="https://cusdis.com/js/widget/lang/zh-cn.js"></script> */}
       <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
     </div>
   )
