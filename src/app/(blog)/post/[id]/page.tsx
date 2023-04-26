@@ -65,7 +65,7 @@ type Props = {
 export default async function Page({ params, searchParams }: Props) {
   const bc = getBlocks(params.id);
   const p = getPage(params.id);
-  
+
   const [blocks, pageInfo] = await Promise.all([bc, p]);
   // const hasPermission = pageInfo?.properties.password.type === PAGE_TYPES.RICH_TEXT && pageInfo.properties.password.rich_text[0]?.plain_text === searchParams?.password
 
@@ -77,6 +77,7 @@ export default async function Page({ params, searchParams }: Props) {
   //     <ModalLogin/>
   //   </div>
   // }
+  const title = pageInfo?.properties.title.type == PAGE_TYPES.TITLE ? pageInfo?.properties.title.title[0]?.plain_text : ''
 
   return (
     <div className="overflow-y-scroll h-[calc(100vh-56px)]" id="container">
@@ -93,7 +94,7 @@ export default async function Page({ params, searchParams }: Props) {
         <div className="">
           <div className="h-16 w-16 text-7xl max-w-full -mt-[2.2rem]">{pageInfo?.icon?.type === PAGE_TYPES.EMOJI && <span>{pageInfo.icon.emoji}</span>}</div>
           <div className="my-10">
-            <h1 className="text-[2em] leading-[1] font-bold">{pageInfo?.properties.title.type == PAGE_TYPES.TITLE ? pageInfo?.properties.title.title[0]?.plain_text : ''}</h1>
+            <h1 className="text-[2em] leading-[1] font-bold">{title}</h1>
           </div>
         </div>
       </div>
@@ -131,7 +132,7 @@ export default async function Page({ params, searchParams }: Props) {
             })
           }
         </div>
-        <Divider className="my-6"/>
+        <Divider className="my-6" />
         <div>
           {blocks?.map((block) => {
             return (
@@ -142,6 +143,15 @@ export default async function Page({ params, searchParams }: Props) {
           })}
         </div>
       </div>
+      <div id="cusdis_thread"
+        data-host="https://cusdis.com"
+        data-app-id="112fca9c-9401-4cfa-827a-00bbaee24f48"
+        data-page-id={params.id}
+        data-page-url={`https://gooney-blog.vercel.app/${params.id}`}
+        data-page-title={title}
+      ></div>
+      <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+      <script defer src="https://cusdis.com/js/widget/lang/zh-cn.js"></script>
     </div>
   )
 }
