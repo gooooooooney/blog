@@ -143,7 +143,7 @@ export default async function Page({ params, searchParams }: Props) {
           })}
         </div>
       </div>
-      <div id="cusdis_thread"
+      {/* <div id="cusdis_thread"
         className="max-w-[90%] md:max-w-[60%] mx-auto py-[5vh]"
         data-host="https://cusdis.com"
         data-app-id="112fca9c-9401-4cfa-827a-00bbaee24f48"
@@ -153,7 +153,7 @@ export default async function Page({ params, searchParams }: Props) {
         data-theme="auto"
       ></div>
       <script defer src="https://cusdis.com/js/widget/lang/zh-cn.js"></script>
-      <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+      <script async defer src="https://cusdis.com/js/cusdis.es.js"></script> */}
     </div>
   )
 }
